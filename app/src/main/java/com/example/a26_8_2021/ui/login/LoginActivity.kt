@@ -13,6 +13,7 @@ import com.example.a26_8_2021.R
 import com.example.a26_8_2021.ui.profile.facebook.FacebookProfileActivity
 import com.example.a26_8_2021.ui.profile.firebase.FirebaseProfileActivity
 import com.example.a26_8_2021.ui.profile.google.GoogleProfileActivity
+import com.example.a26_8_2021.ui.profile.zalo.ZaloProfileActivity
 import com.example.a26_8_2021.ui.signup.SignUpActivity
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -25,6 +26,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.zing.zalo.zalosdk.oauth.LoginVia
+import com.zing.zalo.zalosdk.oauth.OAuthCompleteListener
+import com.zing.zalo.zalosdk.oauth.OauthResponse
+import com.zing.zalo.zalosdk.oauth.ZaloSDK
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
 
@@ -127,6 +132,37 @@ class LoginActivity : AppCompatActivity() {
             }
         })
         /////////// end facebook login
+
+
+
+        // handle click login
+        btn_zalo_login.setOnClickListener {
+            loginZalo()
+        }
+    }
+
+    private fun onLoginSuccess() {  // zalo login
+        val intent = Intent(this, ZaloProfileActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+    }
+
+    private fun onLoginError(code: Int, message: String) {   // zalo login
+        Toast.makeText(this, "[$code] $message", Toast.LENGTH_LONG).show()
+    }
+
+    private val listener = object : OAuthCompleteListener() {   // zalo login
+        override fun onGetOAuthComplete(response: OauthResponse?) {
+            if (TextUtils.isEmpty(response?.oauthCode)) {
+                onLoginError(response?.errorCode ?: -1, response?.errorMessage ?: "Unknown Error")
+            } else {
+                onLoginSuccess()
+            }
+        }
+    }
+
+    private fun loginZalo() {
+        ZaloSDK.Instance.authenticate(this, LoginVia.APP_OR_WEB,listener)
     }
 
     private fun getFacebookData(obj: JSONObject?) {
@@ -175,7 +211,6 @@ class LoginActivity : AppCompatActivity() {
 
                 // go to profile screen
                 startActivity(Intent(this, FirebaseProfileActivity::class.java))
-                finish()
             }
             .addOnFailureListener {
                 // login failed
@@ -189,7 +224,9 @@ class LoginActivity : AppCompatActivity() {
 
         callBackManager.onActivityResult(requestCode, resultCode, data) // facebook login
 
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);  google login
+        ZaloSDK.Instance.onActivityResult(this,requestCode,resultCode,data)   // zalo login
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);  /// google login
         if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach
             // a listener.

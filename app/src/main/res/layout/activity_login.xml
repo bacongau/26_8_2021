@@ -74,6 +74,8 @@
             android:drawableLeft="@drawable/ic_firebase"
             android:drawableRight="@drawable/ic_firebase"
             android:text="Login firebase"
+            android:background="#039be5"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
@@ -86,6 +88,8 @@
             android:drawableLeft="@drawable/ic_firebase"
             android:drawableRight="@drawable/ic_firebase"
             android:text="sign up firebase"
+            android:background="#039be5"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/btn_login"
             app:layout_constraintStart_toStartOf="@+id/btn_login"
             app:layout_constraintTop_toBottomOf="@+id/btn_login" />
@@ -94,66 +98,47 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="Or Login with"
-            android:textSize="18dp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_go_to_sign_up" />
 
-        <ImageView
-            android:id="@+id/img_google_login"
-            style="?android:borderlessButtonStyle"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/ic_google"
-            app:layout_constraintBottom_toBottomOf="@+id/img_fb_login"
-            app:layout_constraintEnd_toStartOf="@+id/img_fb_login"
-            app:layout_constraintStart_toStartOf="@+id/btn_go_to_sign_up"
-            app:layout_constraintTop_toTopOf="@+id/img_fb_login" />
-
-        <ImageView
-            android:id="@+id/img_fb_login"
-            style="?android:borderlessButtonStyle"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_facebook"
-            app:layout_constraintEnd_toStartOf="@+id/img_zalo_login"
-            app:layout_constraintStart_toEndOf="@+id/img_google_login"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-        <ImageView
-            android:id="@+id/img_zalo_login"
-            style="?android:borderlessButtonStyle"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/ic_zalo"
-            app:layout_constraintBottom_toBottomOf="@+id/img_fb_login"
-            app:layout_constraintEnd_toEndOf="@+id/btn_go_to_sign_up"
-            app:layout_constraintStart_toEndOf="@+id/img_fb_login"
-            app:layout_constraintTop_toTopOf="@+id/img_fb_login" />
-
         <com.google.android.gms.common.SignInButton
             android:id="@+id/btn_google_login"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/btn_fb_login"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btn_fb_login"
+            app:layout_constraintTop_toBottomOf="@+id/btn_fb_login" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/btn_fb_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_google_login"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.54"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <Button
+            android:id="@+id/btn_zalo_login"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:background="#008ff3"
+            android:text="login with zalo"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/btn_fb_login"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btn_fb_login"
+            app:layout_constraintTop_toBottomOf="@+id/btn_google_login" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

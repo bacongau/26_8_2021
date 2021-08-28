@@ -5,13 +5,20 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.26_8_2021">
-        <activity android:name=".ui.profile.facebook.FacebookProfileActivity"></activity>
+
+        <meta-data
+            android:name="com.zing.zalo.zalosdk.appID"
+            android:value="@string/appID" />
+
+        <activity android:name=".ui.profile.zalo.ZaloProfileActivity"></activity>
+        <activity android:name=".ui.profile.facebook.FacebookProfileActivity" />
         <activity android:name=".ui.profile.firebase.FirebaseProfileActivity" />
         <activity android:name=".ui.profile.google.GoogleProfileActivity" />
         <activity android:name=".ui.signup.SignUpActivity" />
@@ -22,7 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -35,7 +41,8 @@
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
-            <intent-filter><action android:name="android.intent.action.VIEW" />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -43,7 +50,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

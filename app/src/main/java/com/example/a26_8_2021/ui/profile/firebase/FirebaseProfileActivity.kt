@@ -26,6 +26,8 @@ class FirebaseProfileActivity : AppCompatActivity() {
         // configure action bar
         actionBar = supportActionBar!!
         actionBar.title = "Firebase Profile"
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
 
         // init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
@@ -52,5 +54,10 @@ class FirebaseProfileActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()  // go back to previous activity, when ack button of actionbar clicked
+        return super.onSupportNavigateUp()
     }
 }

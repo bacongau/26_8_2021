@@ -74,6 +74,8 @@
             android:drawableLeft="@drawable/ic_firebase"
             android:drawableRight="@drawable/ic_firebase"
             android:text="sign up firebase"
+            android:background="#039be5"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
