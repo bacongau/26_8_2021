@@ -73,7 +73,7 @@
             android:layout_marginTop="16dp"
             android:drawableLeft="@drawable/ic_firebase"
             android:drawableRight="@drawable/ic_firebase"
-            android:text="Login firebase"
+            android:text="sign up firebase"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />

@@ -79,13 +79,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
         <Button
-            android:id="@+id/btn_go_to_sign_in"
+            android:id="@+id/btn_go_to_sign_up"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:drawableLeft="@drawable/ic_firebase"
             android:drawableRight="@drawable/ic_firebase"
-            android:text="sign in firebase"
+            android:text="sign up firebase"
             app:layout_constraintEnd_toEndOf="@+id/btn_login"
             app:layout_constraintStart_toStartOf="@+id/btn_login"
             app:layout_constraintTop_toBottomOf="@+id/btn_login" />
@@ -100,7 +100,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_go_to_sign_in" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_go_to_sign_up" />
 
         <ImageView
             android:id="@+id/img_google_login"
@@ -110,7 +110,7 @@
             android:src="@drawable/ic_google"
             app:layout_constraintBottom_toBottomOf="@+id/img_fb_login"
             app:layout_constraintEnd_toStartOf="@+id/img_fb_login"
-            app:layout_constraintStart_toStartOf="@+id/btn_go_to_sign_in"
+            app:layout_constraintStart_toStartOf="@+id/btn_go_to_sign_up"
             app:layout_constraintTop_toTopOf="@+id/img_fb_login" />
 
         <ImageView
@@ -131,7 +131,7 @@
             android:layout_height="80dp"
             android:src="@drawable/ic_zalo"
             app:layout_constraintBottom_toBottomOf="@+id/img_fb_login"
-            app:layout_constraintEnd_toEndOf="@+id/btn_go_to_sign_in"
+            app:layout_constraintEnd_toEndOf="@+id/btn_go_to_sign_up"
             app:layout_constraintStart_toEndOf="@+id/img_fb_login"
             app:layout_constraintTop_toTopOf="@+id/img_fb_login" />
 

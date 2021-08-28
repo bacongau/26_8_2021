@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.26_8_2021">
-        <activity android:name=".ui.profile.google.GoogleProfileActivity"></activity>
+        <activity android:name=".ui.profile.facebook.FacebookProfileActivity"></activity>
+        <activity android:name=".ui.profile.firebase.FirebaseProfileActivity" />
+        <activity android:name=".ui.profile.google.GoogleProfileActivity" />
         <activity android:name=".ui.signup.SignUpActivity" />
         <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
