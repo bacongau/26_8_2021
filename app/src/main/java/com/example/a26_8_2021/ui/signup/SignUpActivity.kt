@@ -21,15 +21,11 @@ import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : BaseActivity<SignUpViewModel, ActivitySignUpBinding>() {
 
-    // Action bar
-    private lateinit var actionBar: ActionBar
-
     // Firebase Auth
     private lateinit var firebaseAuth: FirebaseAuth
 
     private var email = ""
     private var password = ""
-
 
     override fun createViewModel(): SignUpViewModel {
         val factory = SignUpViewModelFactory()
@@ -45,7 +41,6 @@ class SignUpActivity : BaseActivity<SignUpViewModel, ActivitySignUpBinding>() {
         binding.lifecycleOwner = this;
 
         // configure action bar // enable back button
-        actionBar = supportActionBar!!
         actionBar.title = "Sign Up"
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setDisplayHomeAsUpEnabled(true)

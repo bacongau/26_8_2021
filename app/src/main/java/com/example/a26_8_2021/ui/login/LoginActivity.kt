@@ -43,10 +43,6 @@ import java.security.AccessController.getContext
 const val RC_SIGN_IN = 123
 
 class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
-    private val TAG = "LoginActivity"
-
-    // action bar
-    private lateinit var actionBar: ActionBar
 
     // Firebase Auth
     private lateinit var firebaseAuth: FirebaseAuth
@@ -70,38 +66,7 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
 
     override fun initView() {
         // configure actionbar
-        actionBar = supportActionBar!!
         actionBar.title = "Login"
-
-        /////////// start facebook login
-        callBackManager = CallbackManager.Factory.create()
-        btn_fb_login.setReadPermissions(
-            listOf(
-                "email",
-                "public_profile",
-                "user_gender",
-                "user_birthday",
-                "user_friends"
-            )
-        )
-        btn_fb_login.registerCallback(callBackManager, object : FacebookCallback<LoginResult> {
-            override fun onSuccess(result: LoginResult?) {
-                val graphRequest =
-                    GraphRequest.newMeRequest(result?.accessToken) { `object`, response ->
-                        FacebookLoginHelper().getFacebookData(btn_fb_login.context, `object`)
-                    }
-
-                val parameter = Bundle()
-                parameter.putString("fields", "name,email")
-                graphRequest.parameters = parameter
-
-                graphRequest.executeAsync()
-            }
-
-            override fun onCancel() {}
-
-            override fun onError(error: FacebookException?) {}
-        })
     }
 
     override fun initData() {
@@ -134,6 +99,36 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
         btn_zalo_login.setOnClickListener {
             loginZalo()
         }
+
+        // handle click facebook login
+        callBackManager = CallbackManager.Factory.create()
+        btn_fb_login.setReadPermissions(
+            listOf(
+                "email",
+                "public_profile",
+                "user_gender",
+                "user_birthday",
+                "user_friends"
+            )
+        )
+        btn_fb_login.registerCallback(callBackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(result: LoginResult?) {
+                val graphRequest =
+                    GraphRequest.newMeRequest(result?.accessToken) { `object`, response ->
+                        FacebookLoginHelper().getFacebookData(btn_fb_login.context, `object`)
+                    }
+
+                val parameter = Bundle()
+                parameter.putString("fields", "name,email")
+                graphRequest.parameters = parameter
+
+                graphRequest.executeAsync()
+            }
+
+            override fun onCancel() {}
+
+            override fun onError(error: FacebookException?) {}
+        })
     }
 
     private val listener = object : OAuthCompleteListener() {   // zalo login
@@ -150,7 +145,7 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
         }
     }
 
-    private fun loginZalo() {
+    private fun loginZalo() {  // zalo login
         ZaloSDK.Instance.authenticate(this, LoginVia.APP_OR_WEB, listener)
     }
 
