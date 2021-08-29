@@ -15,6 +15,18 @@ buildscript {
     }
 }
 
+ext {
+    fastAdapterVersion = "5.2.1"
+    daggerVersion = "2.21"
+    androidxLifecycleVersion = "2.2.0"
+    junit5 = "5.7.0"
+    retrofitVersion = "2.9.0"
+    coroutineVersion = "1.4.2"
+    lifecycle_version = "2.3.0"
+    junit5 = "5.7.1"
+    roomVersion = "2.2.6"
+}
+
 allprojects {
     repositories {
         google()
